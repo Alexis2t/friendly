@@ -1,0 +1,13 @@
+<div class="container friend-show-container">
+  <h1><%= @friend.name %></h1>
+
+  <img class="friend-show-picture" src="https://thispersondoesnotexist.com" alt="<%= @friend.name %>-picture">
+  <div class="firend-show-details">
+    <h2><%= @friend.price_per_day %>€/day</h2>
+    <p><%= @friend.description %></p>
+  </div>
+  <div class="show-booking">
+    <p>dates</p>
+    <button>Book</button>
+  </div>
+</div>

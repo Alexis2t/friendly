@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>This is the friends index page</h1>
+  <div class="friends-cards">
+    <% @friends.each do |friend| %>
+      <a href="friends/<%= friend.id %>" class="friend-card">
+        <img class="friend-card-picture" src="https://thispersondoesnotexist.com" alt="friend-picture">
+        <div class="friend-card-details">
+          <h2><%= friend.name %></h2>
+          <h3><%= friend.price_per_day %>€/day</h3>
+          <p><%= friend.description %></p>
+        </div>
+      </a>
+    <% end %>
+  </div>
+</div>

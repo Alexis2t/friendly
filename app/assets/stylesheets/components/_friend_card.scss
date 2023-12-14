@@ -1,0 +1,25 @@
+.friends-cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.friend-card {
+  display: flex;
+  box-shadow: 0 0 5px black;
+  margin-top: 40px;
+  width: 80%;
+  border-radius: 10px;
+  overflow: hidden;
+  text-decoration: none;
+  color: black;
+}
+
+.friend-card-picture {
+  width: 200px;
+  height: 200px;
+}
+
+.friend-card-details {
+  padding: 10px;
+}

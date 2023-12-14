@@ -7,3 +7,22 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+require 'faker'
+
+Friend.destroy_all
+User.destroy_all
+
+10.times do
+  Friend.create!(
+    name: Faker::Name.name,
+    price_per_day: rand(50..300),
+    description: Faker::Lorem.paragraph(sentence_count: 2)
+  )
+end
+
+User.create!(
+  name: "Jack",
+  email: "jack@gmail.com",
+  password: "password"
+)
