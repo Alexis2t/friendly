@@ -9,4 +9,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   resources :friends, only: %i[index show]
+  get 'users/:id/dashboard', to: 'pages#dashboard', as: 'dashboard'
 end

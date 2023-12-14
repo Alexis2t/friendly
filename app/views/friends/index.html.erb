@@ -2,14 +2,16 @@
   <h1>This is the friends index page</h1>
   <div class="friends-cards">
     <% @friends.each do |friend| %>
-      <a href="friends/<%= friend.id %>" class="friend-card">
-        <%= cl_image_tag(friend.photo.key, class:"friend-card-picture") %>
-        <div class="friend-card-details">
-          <h2><%= friend.name %></h2>
-          <h3><%= friend.price_per_day %>€/day</h3>
-          <p><%= friend.description %></p>
-        </div>
-      </a>
+      <% if friend.user != current_user %>
+        <a href="friends/<%= friend.id %>" class="friend-card">
+          <%= cl_image_tag(friend.photo.key, class:"friend-card-picture") %>
+          <div class="friend-card-details">
+            <h2><%= friend.name %></h2>
+            <h3><%= friend.price_per_day %>€/day</h3>
+            <p><%= friend.description %></p>
+          </div>
+        </a>
+      <% end %>
     <% end %>
   </div>
 </div>

@@ -1,0 +1,40 @@
+<div class="container">
+  <h1><%= current_user.name %></h1>
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Vos réservations</button>
+      <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Vos amis</button>
+    </div>
+  </nav>
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+      <div class="friends-cards">
+        <% @bookings.each do |booking| %>
+          <%= link_to friend_path(booking.friend), class:"friend-card" do %>
+            <%= cl_image_tag(booking.friend.photo.key, class:"friend-card-picture") %>
+            <div class="friend-card-details">
+              <h3><%= booking.friend.name %></h3>
+              <p>Date de début: <%= booking.start_date %></p>
+              <p>Date de fin: <%= booking.end_date %></p>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+      <div class="friends-cards">
+        <% @friends.each do |friend| %>
+          <%= link_to friend_path(friend), class:"friend-card" do %>
+            <%= cl_image_tag(friend.photo.key, class:"friend-card-picture") %>
+            <div class="friend-card-details">
+              <h3><%= friend.name %></h3>
+              <p><%= friend.price_per_day %>€/jour</p>
+              <p><%= friend.description %></p>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
