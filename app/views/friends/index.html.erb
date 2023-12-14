@@ -3,7 +3,7 @@
   <div class="friends-cards">
     <% @friends.each do |friend| %>
       <a href="friends/<%= friend.id %>" class="friend-card">
-        <img class="friend-card-picture" src="https://thispersondoesnotexist.com" alt="friend-picture">
+        <%= cl_image_tag(friend.photo.key, class:"friend-card-picture") %>
         <div class="friend-card-details">
           <h2><%= friend.name %></h2>
           <h3><%= friend.price_per_day %>€/day</h3>

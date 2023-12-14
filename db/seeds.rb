@@ -9,20 +9,33 @@
 #   end
 
 require 'faker'
+require 'open-uri'
 
 Friend.destroy_all
+Friend.all.each do |friend|
+  friend.photo.purge
+end
 User.destroy_all
+User.all.each do |user|
+  user.photo.purge
+end
 
-10.times do
-  Friend.create!(
+4.times do
+  friend = Friend.new(
     name: Faker::Name.name,
     price_per_day: rand(50..300),
     description: Faker::Lorem.paragraph(sentence_count: 2)
   )
+  file = URI.open("https://thispersondoesnotexist.com")
+  friend.photo.attach(io: file, filename: "friend-picture-1", content_type:"image/png")
+  friend.save!
 end
 
-User.create!(
-  name: "Jack",
+user = User.new(
+  name: "Jack Sparrow",
   email: "jack@gmail.com",
   password: "password"
 )
+file = URI.open("https://www.lexpress.fr/resizer/3LDbc2XEPXv8WwlzOQITI36rQ_Y=/arc-photo-lexpress/eu-central-1-prod/public/ICEIIMCKNFEKLCF5IFJGBWDZ44.jpg")
+user.photo.attach(io: file, filename: "user-picture-1", content_type:"image/png")
+user.save!
