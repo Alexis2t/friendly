@@ -22,4 +22,17 @@
 
 .friend-card-details {
   padding: 10px;
+  flex-grow: 1;
+}
+
+.friend-card-title-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.friend-card-title {
+  text-decoration: none;
+  font-size: 26px;
+  color: black;
 }

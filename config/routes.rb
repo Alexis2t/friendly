@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  resources :friends, only: %i[index show]
+  resources :friends, only: %i[index show new create destroy]
   get 'users/:id/dashboard', to: 'pages#dashboard', as: 'dashboard'
 end

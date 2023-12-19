@@ -1,7 +1,11 @@
 <div class="container friend-show-container">
   <h1><%= @friend.name %></h1>
 
-  <%= cl_image_tag(@friend.photo.key, class:"friend-show-picture") %>
+  <% if @friend.photo.attached? %>
+    <%= cl_image_tag(@friend.photo.key, class:"friend-show-picture") %>
+  <% else %>
+    <%= image_tag("default_friend_picture.png", class:"friend-show-picture") %>
+  <% end %>
   <div class="firend-show-details">
     <h2><%= @friend.price_per_day %>€/day</h2>
     <p><%= @friend.description %></p>
